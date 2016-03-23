@@ -1,20 +1,20 @@
 #!/usr/bin/env node
 'use strict';
-var meow = require('meow');
-var <%= camelModuleName %> = require('./');
 
-var cli = meow([
-	'Usage',
-	'  $ <%= moduleName %> [input]',
-	'',
-	'Options',
-	'  --foo  Lorem ipsum. [Default: false]',
-	'',
-	'Examples',
-	'  $ <%= moduleName %>',
-	'  unicorns & rainbows',
-	'  $ <%= moduleName %> ponies',
-	'  ponies & rainbows'
-]);
+const inquirer = require('inquirer');
+const <%= camelModuleName %> = require('./');
 
-console.log(<%= camelModuleName %>(cli.input[0] || 'unicorns'));
+const questions = [
+  {
+    type: 'list',
+    name: 'action',
+    message: 'What to do?',
+    choices: [
+      'The usual'
+    ]
+  }
+];
+
+inquirer.prompt(questions, answers => {
+  console.log('You chose to do %s...', answers.action);
+});

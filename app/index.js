@@ -18,11 +18,13 @@ module.exports = yeoman.Base.extend({
 		}, {
 			name: 'githubUsername',
 			message: 'What is your GitHub username?',
+      default: 'stigok',
 			store: true,
 			validate: x => x.length > 0 ? true : 'You have to provide a username'
 		}, {
 			name: 'website',
 			message: 'What is the URL of your website?',
+      default: 'stigok.com',
 			store: true,
 			validate: x => x.length > 0 ? true : 'You have to provide a website URL',
 			filter: x => normalizeUrl(x)
@@ -57,10 +59,8 @@ module.exports = yeoman.Base.extend({
 				self.fs.copyTpl(self.templatePath('cli.js'), self.destinationPath('cli.js'), tpl);
 			}
 
-			mv('editorconfig', '.editorconfig');
 			mv('gitattributes', '.gitattributes');
 			mv('gitignore', '.gitignore');
-			mv('travis.yml', '.travis.yml');
 			mv('_package.json', 'package.json');
 
 			cb();
