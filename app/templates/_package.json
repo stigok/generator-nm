@@ -10,6 +10,9 @@
     "url": "<%= humanizedWebsite %>"
   },<% if (cli) { %>
   "bin": "cli.js",<% } %>
+  "scripts": {
+    "test": "mocha"
+  },
   "engines": {
     "node": ">=5.6.0"
   },
@@ -24,5 +27,10 @@
   ],
   "dependencies": {<% if (cli) { %>
     "inquirer": "^0.12.*"
-  <% } %>}
+  <% } %>},
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5",
+    "sinon": "^1.17.3"
+  }
 }
